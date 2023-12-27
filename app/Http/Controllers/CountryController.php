@@ -11,11 +11,13 @@ class CountryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(request $request)
     {
         try {
 
-            $countries = Country::All();
+            $key = $request->key;
+
+            $countries = Country::where('name','LIKE','%'.$key.'%')->get();
 
             return response()->json($countries,200);
 

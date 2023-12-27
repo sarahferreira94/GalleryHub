@@ -11,11 +11,13 @@ class OwnerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(request $request)
     {
         try {
 
-            $owners = Owner::All();
+            $key = $request->key;
+
+            $owners = Owner::where('name','LIKE','%'.$key.'%')->get();
 
             return response()->json($owners,200);
 
