@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', [\App\Http\Controllers\AuthController::class,'login']);
+Route::post('logout', [\App\Http\Controllers\AuthController::class,'logout']);
+Route::post('register', [\App\Http\Controllers\AuthController::class,'register']);
+
+Route::middleware(['jwt.auth'])->group(function () {
+    Route::prefix('v1')->group(function () {
+        // Listagem
+        Route::resource('artwork', \App\Http\Controllers\ArtworkController::class);
+
+        // Filtros
+        Route::resource('owner', \App\Http\Controllers\OwnerController::class);
+        Route::resource('country', \App\Http\Controllers\CountryController::class);
+        Route::resource('artist', \App\Http\Controllers\ArtistController::class);
+    });
 });

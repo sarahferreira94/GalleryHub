@@ -16,13 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::prefix('v1')->group( function () {
-    // List
-    Route::resource('artwork', \App\Http\Controllers\ArtworkController::class);
-
-    // Filters
-    Route::resource('owner', \App\Http\Controllers\OwnerController::class);
-    Route::resource('country', \App\Http\Controllers\CountryController::class);
-    Route::resource('artist', \App\Http\Controllers\ArtistController::class);
-});
