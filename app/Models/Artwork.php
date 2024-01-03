@@ -10,7 +10,7 @@ class Artwork extends Model
     use HasFactory;
 
     protected $fillable = [
-        'idartwork', 'name', 'idCountry', 'idowner', 'idartist'
+        'idartwork', 'date', 'name', 'idCountry', 'idowner', 'idartist'
     ];
 
     protected $table = 'arts.artwork';

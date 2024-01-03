@@ -20,14 +20,23 @@ class ArtworkController extends Controller
             $keyArtist = $request->artist;
 
             $artwork = Artwork::when($request->country, function ($query, $keyCountry) {
-                $query->where('idcountry', $keyCountry);
+                $query->where('artwork.idcountry', $keyCountry);
             })
             ->when($request->owner, function ($query, $keyOwner) {
-                $query->where('idowner', $keyOwner);
+                $query->where('artwork.idowner', $keyOwner);
             })
             ->when($request->artist, function ($query, $keyArtist) {
-                $query->where('idartist', $keyArtist);
+                $query->where('artwork.idartist', $keyArtist);
             })
+            ->join('arts.country', 'artwork.idcountry', '=', 'country.idcountry') 
+            ->join('arts.owner', 'artwork.idowner', '=', 'owner.idowner') 
+            ->join('arts.artist', 'artwork.idartist', '=', 'artist.idartist') 
+            ->select('artwork.idartwork'
+                    ,'artwork.name'
+                    ,'artwork.date'
+                    ,'country.name as country'
+                    ,'owner.name as owner'
+                    ,'artist.name as artist') 
             ->get();
 
             return response()->json($artwork,200);
