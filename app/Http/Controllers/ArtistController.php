@@ -10,7 +10,7 @@ class ArtistController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/artists",
+     *     path="/api/artist",
      *     tags={"Artists"},
      *     summary="Get a list of artists",
      *     description="Returns a list of artists matching the provided key",
@@ -24,7 +24,7 @@ class ArtistController extends Controller
      *     @OA\Response(response=200, description="Successful operation"),
      *     @OA\Response(response=400, description="Bad request")
      * )
-     */
+     *//
     public function index(Request $request)
     {
         try {
@@ -40,49 +40,37 @@ class ArtistController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    /**/
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    /**/
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
+    /**/
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    /**/
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    /**/
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    /**/
     public function destroy(string $id)
     {
         //

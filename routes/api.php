@@ -25,7 +25,7 @@ Route::middleware(['jwt.auth'])->group(function () {
         Route::resource('artwork', \App\Http\Controllers\ArtworkController::class);
 
         // Filtros
-        // Route::resource('owner', \App\Http\Controllers\OwnerController::class);
+        Route::resource('owner', \App\Http\Controllers\OwnerController::class);
         Route::resource('country', \App\Http\Controllers\CountryController::class);
         Route::resource('artist', \App\Http\Controllers\ArtistController::class);
     });
