@@ -9,7 +9,21 @@ use App\Models\Owner;
 class OwnerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/owner",
+     *     tags={"Owners"},
+     *     summary="Get a list of owners",
+     *     description="Returns a list of owners matching the provided key",
+     *     @OA\Parameter(
+     *         name="key",
+     *         in="query",
+     *         required=false,
+     *         description="Search key for filtering owners by name",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Bad request")
+     * )
      */
     public function index(request $request)
     {

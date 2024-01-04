@@ -10,7 +10,58 @@ use App\Models\Artwork;
 class ArtworkController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/artwork",
+     *     tags={"Artwork"},
+     *     summary="Get artwork information",
+     *     description="Retrieve artwork details based on country, owner, and artist filters",
+     *     @OA\Parameter(
+     *         name="country",
+     *         in="query",
+     *         required=false,
+     *         description="Filter artwork by country",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="owner",
+     *         in="query",
+     *         required=false,
+     *         description="Filter artwork by owner",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="artist",
+     *         in="query",
+     *         required=false,
+     *         description="Filter artwork by artist",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="object",
+     *                 @OA\Property(property="idartwork", type="integer"),
+     *                 @OA\Property(property="name", type="string"),
+     *                 @OA\Property(property="date", type="string"),
+     *                 @OA\Property(property="country", type="string"),
+     *                 @OA\Property(property="owner", type="string"),
+     *                 @OA\Property(property="artist", type="string")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad request",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="status", type="integer"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     )
+     * )
      */
     public function index(Request $request)
     {

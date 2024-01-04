@@ -9,7 +9,21 @@ use App\Models\Artist;
 class ArtistController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/artists",
+     *     tags={"Artists"},
+     *     summary="Get a list of artists",
+     *     description="Returns a list of artists matching the provided key",
+     *     @OA\Parameter(
+     *         name="key",
+     *         in="query",
+     *         required=false,
+     *         description="Search key for filtering artists by name",
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Bad request")
+     * )
      */
     public function index(Request $request)
     {
